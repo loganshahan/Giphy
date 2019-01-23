@@ -26,6 +26,7 @@ $("#add-drink").on("click", function(event){
 createButton();
 
 $(document).on("click", ".drink", function(){
+    $("#gifs-here").empty();
     var drink = $(this).attr("data-drink");
     console.log($(this).attr("data-drink"));
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -53,7 +54,11 @@ $(document).on("click", ".drink", function(){
 
               // Giving the image tag an src attribute of a proprty pulled off the
               // result item
-              drinkImage.attr("src", results[i].images.fixed_height.url);
+              drinkImage.attr("src", results[i].images.fixed_height_still.url);
+              drinkImage.attr("data-still", results[i].images.fixed_height_still.url);
+              drinkImage.attr("data-animate", results[i].images.fixed_height.url);
+              drinkImage.attr("data-state", "still")
+              drinkImage.addClass("gif");
               gifDiv.append(p);
               gifDiv.append(drinkImage);
               $("#gifs-here").append(gifDiv)
@@ -61,4 +66,16 @@ $(document).on("click", ".drink", function(){
     })
 
 
-})
+});
+$(document).on("click", ".gif", function(){
+    var state = $(this).attr("data-state");
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+
+}
+else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
