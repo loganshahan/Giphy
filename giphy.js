@@ -1,19 +1,33 @@
 var topic = ["beer", "wine", "vodka", "gin", "tequila"];
 
 function createButton(){
+    $("#buttons-here").empty();
     for(i=0; i<topic.length; i++){
         // var button = document.getElementById("buttons-here").innerHTML += "<button>" + topic[i] + "</button>";
         // button.setAttribute("data-drink", topic[i]);
-        document.write("<div>");
-        document.write("<input type='button' value='" + topic[i] + "'/>");
-        document.write("</div>");
+        // document.write("<div>");
+        // document.write("<input type='button' value='" + topic[i] + "'/>");
+        // document.write("</div>");
+        var a = $("<button>");
+        a.addClass("drink");
+        a.attr("data-drink", topic[i]);
+        a.text(topic[i]);
+        $("#buttons-here").append(a);
+
     }
 }
-createButton()
+// createButton()
+$("#add-drink").on("click", function(event){
+    event.preventDefault();
+    var drinks = $("#drink-input").val().trim();
+    topic.push(drinks);
+    createButton();
+})
+createButton();
 
-$("input").on("click", function(){
-    var drink = $(this).attr("value");
-    console.log($(this).attr("value"));
+$(document).on("click", ".drink", function(){
+    var drink = $(this).attr("data-drink");
+    console.log($(this).attr("data-drink"));
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     drink + "&api_key=RWDFNcZjNeG9mcngWHqfz4VI50lezycc&limit=10";
 
