@@ -62,6 +62,7 @@ $(document).on("click", ".drink", function(){
               gifDiv.append(p);
               gifDiv.append(drinkImage);
               $("#gifs-here").append(gifDiv)
+              
         }
     })
 

@@ -1,14 +1,18 @@
 body{
     text-align: center;
-    background: skyblue;
+    background: goldenrod;
+    background-image: url('https://image.shutterstock.com/image-vector/happy-hour-burst-toasting-hands-450w-250561168.jpg');
     font-size: 25px;
-    color:navy;
+    color: black;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    
 }
 #drink-form{
     text-align: center;
 }
 /* #gifs-here{
-    float: center;
+    float: left;
 } */
 .gif{
     float: center;
