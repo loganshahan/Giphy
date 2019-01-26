@@ -12,9 +12,10 @@ body{
 #drink-form{
     text-align: center;
 }
-/* #gifs-here{
-    float: left;
-} */
+#gifs-here{
+    display: flex;
+    flex-wrap: wrap;
+}
 .gif{
     float: center;
     padding: 10px;
